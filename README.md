@@ -1,3 +1,6 @@
 ### Bonfire, Ziplines, Basejumps
 
-A collection of the answers for [freeCodeCamp](http://www.freecodecamp.com/)
+freeCodeCamp bonfire solutions
+
+
+[freeCodeCamp](http://www.freecodecamp.com/)
