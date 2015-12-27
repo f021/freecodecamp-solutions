@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+form {
+  border: 1px solid lightgrey;
+  width: 8em;
+  padding: .5em;
+  text-align: right;
+  margin: 0;
+}
+
+button {
+  background-color: lightgrey;
+  border-radius: 25%;
+  border: none;
+  width: 2em;
+}
+
+button:focus {
+  outline: none;
+}
+
+input {
+  text-align: right;
+  width: 7em;
+}
+
+button:nth-child(1) {
+  background-color: red;
+  color:white;
+}
+
+button:nth-child(21) {
+  background-color: green;
+  color: white;
+}
