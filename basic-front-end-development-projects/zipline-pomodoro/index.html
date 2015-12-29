@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>zipline: pomodoro</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <main>
+      <div id="pomodoro">
+       <p id="time" data-time="1500">25:00</p>
+       <form name="ui">
+        <label><input id="start" type="radio" name="player"> start/resume</label>
+        <label><input id="pause" type="radio" name="player" checked> pause</label>
+        <br />
+        <button type="button" onclick="main.inc(-60)">-</button>
+        <button type="button" onclick="main.inc(60)">+</button>
+        <button type="button" onclick="main.reset()">reset</button>
+      </form>
+      </div>
+    </main>
+    <script src='bundle.js'></script>
+  </body>
+</html>
