@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f1c40f;
+}
+
+
+#news{
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: .7em;
+  width: 100%;
+}
+
+#news li {
+  background-size: cover;
+  background: center center;
+  flex: 0 0 100%;
+  padding: 5em;
+}
+
+#news a {
+  text-decoration: none;
+}
+
+#title {
+  width: 100%;
+  color: white;
+  background-color: black;
+  padding: 2em 3em;
+  text-align: center;
+  background: url('https://s3.amazonaws.com/freecodecamp/wide-social-banner.png') no-repeat center center;
+}
+
+#title h1 {
+  color: green;
+}
+
+
+.headline {
+  width: 80%;
+  /*display: ;*/
+  font-size: 2em;
+  background-color: black;
+  padding: .5em;
+  margin-bottom: 2em;
+}
+
+.headline a {
+  color: white;
+}
+
+.details {
+  width: 40%;
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#news li p a {
+  color: #c0392b;
+}
+
+input[type="text"] {
+  font-size: 1em;
+  background-color: rgb(157, 160, 33);
+  border: none;
+  border-bottom: 4px solid #f39c12;
+  color: white;
+}
+
+input:focus {
+  outline: none;
+}
+
+@media screen and (min-width: 800px) {
+  #news li {
+    flex: 0 0 50%;
+  }
+}
