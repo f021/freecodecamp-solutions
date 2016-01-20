@@ -1,7 +1,7 @@
 const init = [
-    {title: 'Яблочный пирог', text: 'яблоки, мука, яйца, алеся', id: 0},
-      {title: 'Омлет', text: 'яйца, лук', id: 1},
-      {title: 'Суп', text: 'картошка, морквоь', id: 2}
+    { title: 'Crunchy Coffee Cocoa Shake', text: `1/2 cup chilled coffee,1/2 cup fat free milk,1 frozen banana`, id: 0 },
+    { title: 'Hearty Salad', text: `2 tablespoons olive oil, 3 cloves garlic, minced`, id: 1 },
+    { title: 'Spiced veggie rice with poached eggs', text: `7-8 spring onions, 2  cloves of garlic, 2 fresh red chillies, rapeseed or olive oil`, id: 2}
 ];
 
 const { createStore, combineReducers, bindActionCreators } = Redux;
@@ -75,10 +75,7 @@ const records = (state = init, {type, record}) => {
 const current = (state = null, action) => {
   switch (action.type) {
     case 'SET_CURRENT':
-      return
-        state === action.current
-          ? null
-          : action.current;
+      return state === action.current ? null : action.current;
     default:
       return state;
   }
@@ -97,58 +94,70 @@ const reducer = combineReducers({ records, current, mode, buffer });
 const store = createStore(reducer);
 const commands  = { addRecord, delRecord, editRecord, setCurrent, setMode, setBuffer, resBuffer };
 
-const RHeader = ({ record, actions }) => (
-  <a className="list-group-item card-title"
-    style={{ border:'none' }}
-    onClick={ () => {
-      actions.setCurrent(record.id)} }
-  >
-    { record.title }
-  </a>
-);
 
-const RBody = ( {record, actions} ) => {
-  return (
-      <div className="card-text"
-        style={{paddingTop: '1em'}}
-      >
-        <ul style={{listStyleType: 'none'}}>
-          { record.text.split(',').map(ingredient => 
-            <li>{ ingredient }</li>) }
-        </ul>
-        <RBtn record={ record } actions={ actions } />
-      </div>
-  )
-}
-
-const RBtn = ({ record, actions }) => (
-  <div className="card-text text-xs-right">
-    <a className="btn small cancel"
+const DEButton = ({ actions, record }) => (
+  <span>
+    <a className="title-link delete"
       href="#"
       onClick={ () =>
         actions.delRecord({ id: record.id }) }
     >
       DELETE
-   </a>
-    <a className='btn small edit'
+    </a>
+    {' '}
+    <a className="title-link edit"
       href="#"
       onClick={() => {
         actions.setBuffer({...record});
         actions.setMode('EDIT');}}
-     >
+    >
       EDIT
-     </a>
+    </a>
+  </span>
+);
+
+const RHeader = ({ record, actions }) => (
+  <div className="menu" 
+    style={{
+      border: 'none',
+      display: 'flex',
+      justifyContent: 'space-between'
+    }}
+  >
+    <span>
+      <DEButton record={ record } actions={ actions } />
+    </span>
+    <span className="title">
+      <a className=""
+        style={{ border: 'none' }}
+        onClick={ () => 
+          actions.setCurrent(record.id) }
+      >
+        { record.title }
+      </a>
+    </span>
   </div>
 );
+
+const RBody = ( {record, actions} ) => {
+  return (
+      <div className="card-text"
+        style={{textAlign: 'right', paddingTop: '1em' }}
+      >
+        <ul style={{ listStyleType: 'none' }}>
+          { record.text.split(',').map(ingredient => 
+            <li>{ ingredient }</li>) }
+        </ul>
+      </div>
+  )
+}
 
 const Record = (props) => {
   let active =  props.current === props.record.id;
   return (
-    <div className='list-group card'
-      style={styleCSS.active}
-    >
-      <RHeader {...props} />
-      { active && <RBody {...props}/> }
+    <div className='list-group card'>
+      <RHeader { ...props } />
+      { active && <RBody { ...props } /> }
     </div>
   );
 };
@@ -188,7 +197,7 @@ const Edit = ({ actions, buffer }) => {
         </h6>
       <div className="card-block">
         <fieldset className="form-group">
-          <label className="display-4">Recipe:</label>
+          <label className="display-5">Recipe:</label>
           <input className="list-group-item form-control input-xs"
             type="text"
             placeholder="What do you want to cook?"
@@ -196,7 +205,7 @@ const Edit = ({ actions, buffer }) => {
               actions.setBuffer({ title: e.target.value }) }
               value={buffer.title}
           />
-          <label className="display-4">Ingredients:</label>
+          <label className="display-5">Ingredients:</label>
           <textarea className="form-control texarea-xs"
             placeholder="Give me ingredients, separated by coma..."
             onInput={ (e) =>
@@ -260,11 +269,4 @@ const App = () => (
   </Provider>
 );
 
-ReactDOM.render(<App /> ,document.getElementById('root'))
-
-const styleCSS = {
-  active: {
-    backgroundColor: 'rgba(200,200,200, 1)',
-    borderLeft: '2px solid red'
-  }
-};
+ReactDOM.render(<App /> ,document.getElementById('root'));
