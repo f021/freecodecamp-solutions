@@ -1,0 +1,64 @@
+html, body {
+  min-height: 100vh;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+}
+
+#root {
+  background-color: rgba(145,120,170, .3);
+  min-width: inherit;
+  min-height: ingerit;
+  padding: 10px;
+}
+
+svg {
+  position: relative;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: white;
+  shape-rendering: crispEdges;
+}
+ 
+.axis text {
+  font-family: sans-serif;
+  font-size: .5em;
+}
+
+.dot .text {
+  font-size: .5em;
+  font-family: sans-serif;
+}
+
+
+.hidden {
+  display: none;
+}
+
+#tooltip {
+  position: absolute;
+  color: white;
+/*   text-shadow: 2px 3px 13px black; */
+/*   height: auto; */
+  padding: 1em;
+  background-color: rgba(0, 100, 30, .8);
+  border-radius: .6em;
+  pointer-events: none;
+  box-shadow: 2px 2px 10px rgba(100,100,100, 1);
+  z-index: 99; 
+  font-size: .5em;
+  font-family: monospace;
+}
+
+    
+#tooltip p {
+  margin-bottom: 1em;
+  padding: 0;
+}
