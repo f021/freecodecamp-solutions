@@ -1,0 +1,86 @@
+$colorAxisPath: rgba(100, 100, 100, .6);
+$colorAxisText: rbga(100, 100, 100, 1);
+$colorTitle: rgba(30, 30, 30, 1);
+$bgColor: rgba(200,200,200, 1);
+$colorText: rbga(100, 0, 100, 1);
+$colorDescription: rbga(100, 100, 100, 1);
+
+body {
+  background-color: $bgColor;
+}
+
+#plot {
+  position: relative;
+}
+
+#root {
+  // max-width: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  color: $colorTitle;
+  
+  #title {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-size: 1em;
+  }
+  
+  #source {
+    font-size: .6em;
+  }
+  
+  #description {
+    font-size: .4em;
+    color: $colorDescription;
+  }
+}
+
+.axis {
+ 
+  path, line {
+    fill: none;
+    stroke: $colorAxisPath;
+    shape-rendering: crispEdges;
+  } 
+  
+  text {
+    font-family: monospace;
+    font-size: .5em;
+    stroke: $colorAxisText;
+  }
+}
+
+
+#tooltip {
+  
+  position: absolute;
+  width: 10em;
+  height: auto;
+  padding: .5em;
+  background-color: white;
+  border-radius: .6em;
+  pointer-events: none;
+  box-shadow: 1px 1px 1px rgba(100,100,100, 1);
+  
+   p {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: .8em;
+        line-height: 1em;   
+  }
+  
+}
+
+#currency {
+  font-weight: 800;
+}
+
+#date {
+  padding-top: .1em;
+  font-size: .6em;
+}
+
+.hidden {
+  display: none;
+ }
