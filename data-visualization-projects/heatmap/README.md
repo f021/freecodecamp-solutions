@@ -1,1 +1,1 @@
-# es6-webpack-babel-boilerplate
+[codepen.io](http://codepen.io/f021/full/eJKbEg/)
